@@ -98,13 +98,16 @@
         </div>
         <div class="row text-left">
           <p class="text-muted">
-	    Past efforts towards the creation of Part-of-Speech (POS) have been met with a wide variety of successes. Utilizing proper lexical works, the most successful of these attempts have used tailored output sets parsed by hand. These past efforts, however, have been labor intensive, and the difficulties in deriving such output sets has rendered a huge body of data inaccessible. As the data available for use continues to increase exponentially with the digital era, it is in rendering this data useful that provides a key issue in the drive towards more accurate learners. Herein I use of conversational data as a means by which to create an input-output space, and by mining Twitter, create a set of trainable data that uses simplistic and exclusionary parsing rules to determine the value of words appearing in harder-to-parse contexts using kNN.  <br><br>
-Data collection utilized the Twitter REST API, querying for Tweets containing ambiguous words. For each of these terms, a search was then conducted so as to ascertain the most replied-to ten tweets containing these terms on 1-day intervals five days prior to program execution. For each tweet, the author’s profile was then searched against in order to find replies that also contained the search term. Each conversation was then parsed into a number of trainable instances. The bit vector for the selected ambiguous word contained in the instance that, when parsed using simplistic exclusionary methods, yielded the lowest entropy, was then selected to serve as the output for each instance derived from the conversation. This project has made use of a bag-of-words style approach, where each instance includes a list of ids that correspond to the tokens occurring within the sentence. Each instance also keeps track of which word was immediately before and after the search terms instantiation. <br><br>
-A k-nearest-neighbor approach was settled upon for use in the experiment, the decision resting upon the relative ease in implementing kNN, its extensibility, as well as the specialized nature of the collected data. With a generic kNN implementation thus established, a series of different distance measures were applied with varying success. 
+	   Past efforts towards the creation of Part-of-Speech (POS) taggers using machine-learning techniques have been largely successfully, but not without significant costs. Utilizing proper lexical works, these attempts have often made use of tailored output sets—manually and expensively parsed by hand. As such, these approaches have rendered a huge body of data inaccessible, and it is precisely as data continues to grow at an exponential rate that finding better ways to make use of data have become increasingly relevant. Herein I use conversational data as a means by which to create an input-output space, and by mining Twitter, create a set of trainable data that uses simplistic and exclusionary parsing rules in an attempt to classify words appearing in difficult-to-parse contexts using kNN.  
+<br><br>Data collection utilized the Twitter REST API, searching for Tweets containing ambiguous words. For each ambiguous term, a query was conducted so as to ascertain the most replied-to tweets containing these terms, after which, the author’s profile was then searched against in order to find replies that also contained the search term. Each conversation was then parsed into a number of trainable instances, utilizing the outcome of the instance in the conversation that, when parsed using simplistic exclusionary rules, yielded the lowest entropy. This project has made use of a bag-of-words style approach, with each instance including a list of ids corresponding to the tokens occurring within the sentence. Each instance also kept track of which words were immediately before and after the search term’s instantiation.
+<br><br>K-Nearest-Neighbor (kNN) was settled upon for use in the experiment, the decision resting largely upon the constraints of the project as well as the relative ease in implementing kNN, its extensibility, and the specialized nature of the collected data. With a generic kNN implementation thus established, a series of different distance measures were then applied with varying success. While the distance measures were able to outperform a blanket ZeroR measure by—in the best case—8 percent, none of the measures were able to significantly outperform a similar measure instead restricted to per-term frequency. 
 
-	    <div class="row text-center">
-	    <img src ="img/portfolio/roundicons.png" class = "img-responsive center-block">
-	    <br>
+
+
+	   <br> <br>
+
+	    <img src ="img/chart.jpg" class = "img-responsive center-block">
+	    <center>Figure 1. kNN results using different distance measures.  </center>
 	  </div>
 	</div>
     </section>
@@ -132,83 +135,6 @@ A k-nearest-neighbor approach was settled upon for use in the experiment, the de
 </section>
 
 
-
-    <!-- About Section 
-    <section id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>2009-2011</h4>
-                                    <h4 class="subheading">Our Humble Beginnings</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>March 2011</h4>
-                                    <h4 class="subheading">An Agency is Born</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>December 2012</h4>
-                                    <h4 class="subheading">Transition to Full Service</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>July 2014</h4>
-                                    <h4 class="subheading">Phase Two Expansion</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>-->
-
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -230,12 +156,6 @@ A k-nearest-neighbor approach was settled upon for use in the experiment, the de
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">
-                  <!--       <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li> -->
                     </ul>
                 </div>
                 <div class="col-md-4">
